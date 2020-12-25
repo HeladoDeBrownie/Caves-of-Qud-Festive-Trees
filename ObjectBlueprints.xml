@@ -1,0 +1,5 @@
+<objects>
+    <object Name="PlasticTree" Load="Merge">
+        <part Name="helado_FestiveTrees_Festive" Tile="helado_festive-plastic-tree.png" />
+    </object>
+</objects>
