@@ -1,3 +1,4 @@
+using System;
 using XRL;
 using XRL.Core;
 using XRL.World;
@@ -5,6 +6,7 @@ using static XRL.World.Parts.helado_FestiveTrees_Festive;
 
 namespace XRL.World.Parts
 {
+    [Serializable]
     public class helado_FestiveTrees_Festive : IPart
     {
         public const string GAME_STATE_NAME = "helado_Festive Trees_Festive";
@@ -37,7 +39,6 @@ namespace XRL.World.Parts
                 id == GetShortDescriptionEvent.ID ||
                 id == GetShortDisplayNameEvent.ID ||
             base.WantEvent(id, cascade);
-
         }
 
         public override bool HandleEvent(GetShortDescriptionEvent @event)
@@ -79,7 +80,7 @@ public class helado_FestiveTrees_FestiveInitializer : IPlayerMutator
 
         if (Game != null && !Game.HasBooleanGameState(GAME_STATE_NAME))
         {
-            Game.SetBooleanGameState(GAME_STATE_NAME, true);
+            Game.SetBooleanGameState(GAME_STATE_NAME, DateTime.Now.Month == 12);
         }
     }
 }
