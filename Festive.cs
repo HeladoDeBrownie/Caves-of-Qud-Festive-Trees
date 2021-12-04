@@ -28,8 +28,6 @@ namespace XRL.World.Parts
             {
                 ParentObject.RemovePart(this);
             }
-
-            base.Attach();
         }
 
         public override bool WantEvent(int id, int cascade)
@@ -37,7 +35,6 @@ namespace XRL.World.Parts
             return
                 id == GetDisplayNameEvent.ID ||
                 id == GetShortDescriptionEvent.ID ||
-                id == GetShortDisplayNameEvent.ID ||
             base.WantEvent(id, cascade);
         }
 
@@ -47,7 +44,7 @@ namespace XRL.World.Parts
             return base.HandleEvent(@event);
         }
 
-        public override bool HandleEvent(IDisplayNameEvent @event)
+        public override bool HandleEvent(GetDisplayNameEvent @event)
         {
             @event.AddAdjective("{{G-Y-R-E sequence|festive}}");
             return base.HandleEvent(@event);
@@ -58,7 +55,7 @@ namespace XRL.World.Parts
             @event.ColorString = ColorString;
             @event.DetailColor = DetailColor;
 
-            if (ParentObject.Understood() && Tile != null)
+            if (Tile != null)
             {
                 @event.Tile = Tile;
                 return true;
